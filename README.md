@@ -12,6 +12,7 @@ The application is self-contained, using H2 as an in-memory cache, no additional
 There exists 3 endpoints:
 
   GET = "/api/gamemanager?id={GAME_ID}" - Returns the data information regarding a game of nim.
+  
   POST = "/api/gamemanager" - Creates a new game of NIM, you can send a JSON body to change configuration of the game or nothing, which will then use the default values.
     JSON data for POST is the following:
     
