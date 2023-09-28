@@ -26,6 +26,7 @@ public class NimGameService {
 					.nextPlayer(nextPlayer)
 					.matchesLeft(game.getMatches())
 					.turnsTaken(game.getTurn())
+					.running(true)
 					.build();
 		}
 	}

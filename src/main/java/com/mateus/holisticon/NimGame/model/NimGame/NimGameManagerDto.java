@@ -6,12 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 public class NimGameManagerDto {
 	
 	@Data
-	@SuperBuilder
+	@Builder
 	public static class GetOutput {
 		public long id;
 		public boolean isRunning;
@@ -36,7 +35,7 @@ public class NimGameManagerDto {
 	@Data
 	@NoArgsConstructor
 	@AllArgsConstructor
-	@SuperBuilder
+	@Builder
 	public static class Output {
 		private long id;
 		private int current_matches;
@@ -46,14 +45,19 @@ public class NimGameManagerDto {
 	}
 	
 	@Data
-	public static class PutInput {
+	public static
+	@NoArgsConstructor
+	@AllArgsConstructor
+	@Builder
+	class PutInput {
 		private Long game_id;
 		private Integer remove_matches;
-		private PlayerType currentPlayer;
 	}
 	
 	@Data
-	@SuperBuilder	
+	@NoArgsConstructor
+	@AllArgsConstructor
+	@Builder	
 	public static class PutOutput {
 		private Long gameId;
 		private PlayerType winner;
