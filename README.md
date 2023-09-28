@@ -6,17 +6,26 @@ Nim is a two-player game that starts with a heap of 13 matches. On each of their
 Play continues, turns alternating between player and computer, until no matches are left. The player who takes the last match loses.
 For the computer, the number of matches it takes may be chosen randomly, as long as it doesn't exceed the number of available matches. For example, if there are only two matches left, the computer can only take one or two matches.
 
+The application in written in Java with Maven and SpringBoot.
+The application is self-contained, using H2 as an in-memory cache, no additional installs required.
 
-Non-functional requirements
-  1. The application should be written in Java, Kotlin or Scala.
-  2. The application should be self-contained, such as being based on SpringBoot, and runnable from the command line.
-  3. Use Maven, Gradle or SBT to build the application. Don’t use any other tools or plugins that might prevent the build from running on our machine.
-  4. A game of Nim can be played without any issues, bugs, or crashes.
+There exists 3 endpoints:
 
+  GET = "/api/gamemanager?id={GAME_ID}" - Returns the data information regarding a game of nim.
+  POST = "/api/gamemanager" - Creates a new game of NIM, you can send a JSON body to change configuration of the game or nothing, which will then use the default values.
+    JSON data for POST is the following:
+      {
+        "starting_matches": "NUMBER_OF_STARTING_MATCHES",
+        "strategy": "WINNING_ORIENTED" OR "RANDOM" 
+        "matches_per_turn": 1, 2, 3...,
+        "firstPlayer": "PLAYER" OR "COMPUTER"
+      }
+  PUT = "/api/gamemanager" - The main endpoint in which we play the game.
+      JSON data for PUT is the following:
+      {
+        "game_id": THE ID OF THE GAME,
+        "remove_matches": NUMBER OF MATCHES TO REMOVE
+      }
 
-Optional goals
-  a) Implement a version of the game server where the computer utilizes a winning-oriented strategy instead of ran-domly drawing matches.
-  b) Implement a parameterized version of the game where the following game settings can be altered.
-    1. The number of matches at game start (e.g., 13 in the default game)
-    2. The number of matches that can be taken each turn (e.g., 1, 2, or 3 in the default game)
-  c) Implement a persistent version of the game, such as by using a database or in-memory cache.
+There is also a .properties file in which you can change config values of the game.
+
