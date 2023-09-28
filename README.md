@@ -14,18 +14,26 @@ There exists 3 endpoints:
   GET = "/api/gamemanager?id={GAME_ID}" - Returns the data information regarding a game of nim.
   POST = "/api/gamemanager" - Creates a new game of NIM, you can send a JSON body to change configuration of the game or nothing, which will then use the default values.
     JSON data for POST is the following:
+    
+      
       {
-        "starting_matches": "NUMBER_OF_STARTING_MATCHES",
-        "strategy": "WINNING_ORIENTED" OR "RANDOM" 
-        "matches_per_turn": 1, 2, 3...,
-        "firstPlayer": "PLAYER" OR "COMPUTER"
+      "starting_matches": "NUMBER_OF_STARTING_MATCHES",
+      "strategy": "WINNING_ORIENTED" OR "RANDOM",
+      "matches_per_turn": 1, 2, 3...,
+      "firstPlayer": "PLAYER" OR "COMPUTER"
       }
+      
+      
   PUT = "/api/gamemanager" - The main endpoint in which we play the game.
       JSON data for PUT is the following:
+      
+      
       {
-        "game_id": THE ID OF THE GAME,
-        "remove_matches": NUMBER OF MATCHES TO REMOVE
+      "game_id": THE ID OF THE GAME,
+      "remove_matches": NUMBER OF MATCHES TO REMOVE
       }
+      
+      
 
-There is also a .properties file in which you can change config values of the game.
+There is also a ```.properties``` file in which you can change config values of the game.
 
