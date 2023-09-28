@@ -19,7 +19,7 @@ import com.mateus.holisticon.NimGame.model.NimGame.PlayerType;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GameManagerTests {
+public class GameManagerRestControllerTests {
 	
 	public static final String ENDPOINT = "api/gamemanager";
 	
